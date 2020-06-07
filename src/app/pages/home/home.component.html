@@ -1,0 +1,18 @@
+<app-header></app-header>
+
+<div *ngFor="let post of list">
+<div class="row no-gutters position-relative border-bottom mb-2 bg-white">
+    <div class="col-md-6 mb-md-0 p-md-4">
+      <h6 class="pt-2 px-2"><span><img src="https://dcassetcdn.com/design_img/1559024/551167/551167_7840631_1559024_911ff84c_image.png" width="30" height="30"></span> pradeepBhardwaj</h6>
+      <img [src]="post.imgUrl" class="w-100" [alt]="post.newsTitle">
+    </div>
+    <div class="col-md-6 position-static px-3 py-3 pl-md-0 post-card">
+      <p class="d-flex justify-content-between likes-comments-detail">
+        <span><i class="fa fa-thumbs-o-up"></i> {{post.totalLikes}} likes </span>
+        <span><i class="fa fa-comment-o"></i> {{post.totalComments}} comments </span>
+      </p>
+      <h5 class="mt-0">{{post.newsTitle}}</h5>
+      <p class="m-0 text-truncate">{{post.newsDesc}}<span><a routerLink="/home/news-details" class="stretched-link">more</a></span></p>
+    </div>
+  </div>
+</div>
