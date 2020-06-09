@@ -1,4 +1,45 @@
 <!-- Tool Bar -->
-<app-toolbar></app-toolbar>
-
-<p>users-list works!</p>
+<nav class="navbar navbar-light bg-white border-bottom py-1 sticky-top" *ngIf="!showMobileSearch">
+    <span>
+        <a class="navbar-brand" href="javascript:history.back()">
+            <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+                <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
+            </svg> {{ 'All users' }}</a>
+    </span>
+    <svg (click)="toggleNobileNav()" class="bi bi-search" width="1.5em" height="1.5em" viewBox="0 0 16 16"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+        <path fill-rule="evenodd"
+            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+    </svg>
+</nav>
+<!-- Search bar -->
+<div class="d-flex bd-highlight bg-white border-bottom py-2 sticky-top" *ngIf="showMobileSearch">
+    <div class="pr-0 pl-3 flex-fill bd-highlight">
+        <svg (click)="toggleNobileNav()" class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+            <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </div>
+    <div class="px-2 flex-fill bd-highlight w-100">
+        <input type="search" class="form-control border-0" placeholder="Search">
+    </div>
+</div>
+<div class="container my-3">
+    <ul class="list-unstyled" *ngFor="let user of userList">
+        <li class="media">
+          <img [src]="user.imgUrl" [alt]="user.displayName" class="mr-3 rounded-circle" alt="..." width="40" height="40">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">{{user.firstName}} {{user.lastName}}</h5>
+            <p>{{user.email}}</p>
+          </div>
+        </li>
+        
+      </ul>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostDataService } from 'src/app/services/post-data.service';
 
 @Component({
   selector: 'app-users-list',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor() { }
+  showMobileSearch=false;
+  userList=[];
+
+  constructor(
+    public postService:PostDataService
+  ) { }
 
   ngOnInit(): void {
+    this.postService.getUsers().subscribe(res => {
+      this.userList = res;
+    });
+  }
+
+  toggleNobileNav(){
+    this.showMobileSearch=!this.showMobileSearch
   }
 
 }

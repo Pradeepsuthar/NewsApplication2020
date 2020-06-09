@@ -1,36 +1,48 @@
 <!-- Tool Bar -->
-<app-toolbar></app-toolbar>
-<!-- <div class="container">
-    
-<div *ngIf="isauthenticated; else pleaseLogin">
+<nav class="navbar navbar-light bg-white border-bottom py-1 sticky-top">
+    <span>
+        <a class="navbar-brand" href="javascript:history.back()">
+            <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
+                <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
+            </svg> {{ 'Account' }}</a>
+    </span>
+    <svg routerLink="/settings" class="bi bi-gear" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+            d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+        <path fill-rule="evenodd"
+            d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+    </svg>
+</nav>
 
-    
-    <img [src]="user.imgUrl" [alt]="user.displayName" class="rounded-circle" width="50" height="50">
-    <h5>{{user.displayName}}</h5>
-    <h5>{{user.email}}</h5>
-    <h5>{{user.phone}}</h5>
-    
-    
-        <button (click)="logout()">LogOut</button>
-    </div>
-    <ng-template #pleaseLogin>
-        <button routerLink="/signin">Sign in with Google</button>
-    </ng-template>
-    
-</div> -->
 
-<div class="jumbotron jumbotron-fluid text-center bg-white border-bottom">
+<div class="jumbotron jumbotron-fluid text-center bg-white border-0 py-0">
     <div class="container">
         <div *ngIf="isauthenticated; else pleaseLogin">
-            <img [src]="user.imgUrl" [alt]="user.displayName" class="rounded-circle" width="100" height="100">
-            <h5 class="mb-0 pb-0 mt-3">{{user.displayName}}</h5>
-            <p class="lead mt-0 pt-0">{{user.email}}</p>
-            <button (click)="logout()" class="btn btn-primary">LogOut</button>
+            <div class="jumbotron jumbotron-fluid mb-0 pb-0 bg-white">
+                <img [src]="user.imgUrl" [alt]="user.displayName" class="rounded-circle" width="80" height="80">
+                <h5 class="mb-0 pb-0 mt-3">{{user.displayName}}</h5>
+                <p class="mt-0 pt-0">{{user.email}}</p>
+                <!-- <button (click)="logout()" class="btn btn-primary btn-sm rounded-0">LogOut</button> -->
+            </div>
+            <div role="separator" class="dropdown-divider"></div>
+
+            <ul class="list-group list-group-flush text-left">
+                <li class="list-group-item" routerLink="/create-post">Create New Post</li>
+                <li class="list-group-item">Recent Activity</li>
+                <li class="list-group-item">Terms & Conditions</li>
+                <li class="list-group-item">Privacy & Policy</li>
+                <li class="list-group-item" (click)="logout()">Log Out</li>
+            </ul>
         </div>
         <ng-template #pleaseLogin>
-            <img src="https://www.accountingweb.co.uk/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png" alt="Avtar" class="rounded-circle" width="100" height="100">
+            <img src="https://www.accountingweb.co.uk/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png"
+                alt="Avtar" class="rounded-circle" width="100" height="100">
             <p class="lead py-3">Sign in now to use more features.</p>
-            <button routerLink="/signin" class="btn btn-primary">Sign in with Google</button>
+            <button routerLink="/signin" class="btn btn-primary btn-sm rounded-0">Sign in with Google</button>
         </ng-template>
     </div>
 </div>

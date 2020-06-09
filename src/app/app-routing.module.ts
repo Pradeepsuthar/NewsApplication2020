@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { TabsComponent } from './components/tabs/tabs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { AccountComponent } from './pages/account/account.component';

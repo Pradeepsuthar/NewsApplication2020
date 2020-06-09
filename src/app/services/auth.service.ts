@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth} from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { auth } from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthService {
   uid=null
   constructor(
     public afAuth:AngularFireAuth,
-    public router:Router) {
+    public router:Router,
+    public db:AngularFirestore) {
     this.afAuth.authState.subscribe(res=>{
       if(res){
         this.uid=res.uid

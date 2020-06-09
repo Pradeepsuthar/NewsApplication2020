@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
     this.postService.getPosts().subscribe(res => {
       this.list = res;
     });
+    this.postService.getMyAllPost().subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }

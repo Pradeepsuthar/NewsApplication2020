@@ -11,7 +11,7 @@ export class AccountComponent implements OnInit {
   user:any={
     imgUrl:"",
     displayName:"",
-    email:"",
+    email:"", 
     phone:""
   }
   isauthenticated=false;
