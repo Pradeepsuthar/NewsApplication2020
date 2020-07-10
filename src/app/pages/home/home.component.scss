@@ -1,10 +1,60 @@
 .post-card h5{
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+    margin-left: -5px;
+    color: #262626;
+    line-height: inherit;
 }
 .post-card p{
-    font-size: 15px;
-    line-height: normal;
+    font-size: 14px;
+    // line-height: normal;
+    background: 0 0;
+    border: 0;
+    color: #8e8e8e;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
 }
 .post-card .likes-comments-detail{
+    line-height: inherit;
     font-size: 13px;
+}
+
+.placeholder-img{
+    background-image: url("https://www.helpscout.com/images/blog/2016/sep/9-13-loader.gif");
+    background-color: #cccccc;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.commentBox{
+    width: 100%;
+    padding: 8px 13px 8px;
+    margin: 0;
+    font-size: 13px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #f1f1f1;
+    color: #383838;
+    border: none;
+}
+.commentBox:focus{
+    outline: none;
+}
+
+.commentPostBtn{
+    border: 3px solid #007bff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.commentPostBtn:focus{
+    outline: none !important;
 }

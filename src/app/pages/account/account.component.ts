@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ManageAppService } from 'src/app/services/manage-app.service';
 
 @Component({
   selector: 'app-account',
@@ -8,33 +9,35 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountComponent implements OnInit {
 
-  user:any={
-    imgUrl:"",
-    displayName:"",
-    email:"", 
-    phone:""
+  user: any = {
+    imgUrl: "",
+    displayName: "",
+    email: "",
   }
-  isauthenticated=false;
+  isauthenticated = false;
 
   constructor(
-    private auth:AuthService
+    private auth: AuthService,
+    private manageApp: ManageAppService,
   ) { }
 
   ngOnInit(): void {
-    this.auth.afAuth.authState.subscribe(res=>{
-      console.log(res)
-      this.user={
-        imgUrl:res.photoURL,
-        displayName:res.displayName,
-        email:res.email,
-        phone:res.phoneNumber
+    this.manageApp.getUserData().subscribe(res => {
+      this.user = {
+        imgUrl: res['photoURL'],
+        displayName: res['displayName'],
+        email: res['email']
       }
+      // console.log(res['photoURL'])
     })
-   this.isauthenticated = this.auth.isAuthenticated()
-  }
-  
 
-  logout(){
+
+
+    this.isauthenticated = this.auth.isAuthenticated()
+  }
+
+
+  logout() {
     this.auth.userLogout()
   }
 

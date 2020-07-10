@@ -1,5 +1,6 @@
 <!-- Tool Bar -->
-<nav class="navbar navbar-light bg-white border-bottom py-1 sticky-top">
+<nav class="navbar navbar-light bg-white py-0 fixed-top"
+    style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
     <span>
         <a class="navbar-brand" href="javascript:history.back()">
             <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
@@ -18,25 +19,71 @@
     </svg>
 </nav>
 
-
-<div class="jumbotron jumbotron-fluid text-center bg-white border-0 py-0">
+<div class="jumbotron jumbotron-fluid container bg-transparent my-3 text-center">
     <div class="container">
         <div *ngIf="isauthenticated; else pleaseLogin">
-            <div class="jumbotron jumbotron-fluid mb-0 pb-0 bg-white">
+            <div class="jumbotron jumbotron-fluid mb-0 bg-white">
                 <img [src]="user.imgUrl" [alt]="user.displayName" class="rounded-circle" width="80" height="80">
-                <h5 class="mb-0 pb-0 mt-3">{{user.displayName}}</h5>
-                <p class="mt-0 pt-0">{{user.email}}</p>
-                <!-- <button (click)="logout()" class="btn btn-primary btn-sm rounded-0">LogOut</button> -->
+                <h5 class="mb-0 pb-0 mt-3 username">{{user.displayName}}</h5>
+                <p class="mt-0 pt-0 email">{{user.email}}</p>
             </div>
-            <div role="separator" class="dropdown-divider"></div>
 
-            <ul class="list-group list-group-flush text-left">
-                <li class="list-group-item" routerLink="/create-post">Create New Post</li>
-                <li class="list-group-item">Recent Activity</li>
-                <li class="list-group-item">Terms & Conditions</li>
-                <li class="list-group-item">Privacy & Policy</li>
-                <li class="list-group-item" (click)="logout()">Log Out</li>
-            </ul>
+            <div class="jumbotron jumbotron-fluid mb-0 pb-0 bg-white py-2"
+                style="border-top:0.5px solid #e3e3e3;border-bottom:0.5px solid #e3e3e3">
+                <ul class="list-group list-group-horizontal d-flex justify-content-around">
+                    <li class="list-group-item border-0 py-0 my-0">
+                        <small><strong>16 Posts</strong></small>
+                    </li>
+                    <li class="list-group-item border-0 py-0 my-0">
+                        <small><strong>174 Followers</strong></small>
+                    </li>
+                    <li class="list-group-item border-0 py-0 my-0">
+                        <small><strong>451 Following</strong></small>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="jumbotron jumbotron-fluid mb-0 pb-0 bg-white py-2"
+                style="border-top:0.5px solid #e3e3e3;border-bottom:0.5px solid #e3e3e3">
+                <ul class="list-group list-group-horizontal d-flex justify-content-around">
+                    <li class="list-group-item border-0 py-0 my-0" routerLink="">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-grid-3x3" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4V6h4v4H6zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0h4v4H6v-4zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0H6V1h4v4z" />
+                        </svg>
+                    </li>
+                    <li class="list-group-item border-0 py-0 my-0" routerLink="users">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row row-cols-3 row-cols-sm-2 row-cols-md-4">
+                <div class="col p-0 post-img-card">
+                    <div class="jumbotron jumbotron-fluid p-0 m-0">
+                        <img src="https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq"
+                            width="100%" height="100%">
+                    </div>
+                </div>
+                <div class="col p-0 post-img-card">
+                    <div class="jumbotron jumbotron-fluid p-0 m-0">
+                        <img src="https://images.prismic.io/wisdom/6d692c27-5c7d-43ca-a980-713e2394aad9_20.02.24_Wisdom_Panel_Coco_02170_edit.jpg?auto=compress,format"
+                            width="100%" height="100%">
+                    </div>
+                </div>
+                <div class="col p-0 post-img-card">
+                    <div class="jumbotron jumbotron-fluid p-0 m-0">
+                        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*"
+                            width="100%" height="100%">
+                    </div>
+                </div>
+            </div>
+
         </div>
         <ng-template #pleaseLogin>
             <img src="https://www.accountingweb.co.uk/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png"

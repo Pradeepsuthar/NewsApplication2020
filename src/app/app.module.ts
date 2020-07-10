@@ -24,6 +24,7 @@ import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { PostDataService } from './services/post-data.service';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ManageAppService } from './services/manage-app.service';
 
 
 
@@ -53,7 +54,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [PostDataService],
+  providers: [
+    PostDataService,
+    ManageAppService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostDataService } from 'src/app/services/post-data.service';
+import { ManageAppService } from 'src/app/services/manage-app.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { auth } from 'firebase';
 
 @Component({
   selector: 'app-users-list',
@@ -10,18 +12,25 @@ export class UsersListComponent implements OnInit {
 
   showMobileSearch=false;
   userList=[];
-
+  
   constructor(
-    public postService:PostDataService
-  ) { }
+    public manageApp:ManageAppService,
+    public auth:AuthService
+    ) { }
+
+  logedInUserEmail = this.auth.getEmail()
 
   ngOnInit(): void {
-    this.postService.getUsers().subscribe(res => {
-      this.userList = res;
-    });
+    this.manageApp.getAllUsers().toPromise().then(data=>{
+      data.docs.forEach(doc => {
+        // console.log(doc.data())
+        this.userList.push(doc.data())
+        // console.log(this.userList)
+      })
+    })
   }
 
-  toggleNobileNav(){
+  toggleMobileNav(){
     this.showMobileSearch=!this.showMobileSearch
   }
 

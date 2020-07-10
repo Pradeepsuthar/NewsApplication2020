@@ -27,7 +27,7 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.afAuth.authState.subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.user = {
         imgUrl: res.photoURL,
         displayName: res.displayName,
@@ -47,15 +47,23 @@ export class CreatePostComponent implements OnInit {
       uname: this.username,
       uPhotoUrl: this.userImg,
       pdesc: data['postDesc'],
+      pImgPath: postImgPath,
     }
 
-    console.log(newPost)
-    this.postService.createNewPost(newPost,postImgPath);
+    
+    if(newPost['pdesc']==="" && newPost['pImgPath']===""){
+      alert("Please fill the form")
+    }else{
+      console.log(newPost)
+      console.log(postImgPath)
+    }
+
+
+    // this.postService.createNewPost(newPost,postImgPath);
 
     form.reset()
     // console.log(this.userImg)
     // console.log(this.username)
-    console.log(postImgPath)
   }
 
   imageProcessing(event) {

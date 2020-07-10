@@ -1,6 +1,6 @@
 <form #form="ngForm" autocomplete="off" (submit)="postCreated(form)">
     <!-- Tool Bar -->
-    <nav class="navbar navbar-light bg-white border-bottom py-1 sticky-top">
+    <nav class="navbar navbar-light bg-white py-0 sticky-top" style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
         <span class="my-auto">
             <a class="navbar-brand" href="javascript:history.back()">
                 <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
@@ -10,7 +10,7 @@
                     <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
                 </svg> {{ 'Create post' }}</a>
         </span>
-        <button type="submit" class="post-btn my-auto">Post</button>
+        <button type="submit" class="btn btn-sm btn-primary post-btn my-auto" [disabled]="!form.valid">Post</button>
     </nav>
     <div class="container my-3">
         <div class="media">

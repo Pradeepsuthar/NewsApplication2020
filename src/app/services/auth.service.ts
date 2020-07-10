@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AuthService {
   uid=null
+
   constructor(
     public afAuth:AngularFireAuth,
     public router:Router,
@@ -18,7 +19,8 @@ export class AuthService {
         this.uid=res.uid
         localStorage.setItem("uid",res.uid)
         localStorage.setItem("email",res.email)
-        this.router.navigateByUrl("")
+        this.db.collection("users").doc(res.uid).set({displayName:res.displayName,email:res.email,photoURL:res.photoURL})
+        this.router.navigateByUrl("/")
       }
       else{
         localStorage.removeItem("uid")
@@ -28,9 +30,16 @@ export class AuthService {
    }
 
    signinWithGoogle(){
-     return this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider()).then((userCredentials)=> {
-       return userCredentials;
-     })
+     return this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider())
+   }
+
+   getUserData(){
+    // fetch doc from firestore and return 
+    return this.db.collection("users").valueChanges()
+   }
+
+   updateUserProfile(uid,userData){
+     this.db.collection("users").doc(uid).update(userData)
    }
 
    isAuthenticated(){

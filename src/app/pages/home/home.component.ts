@@ -11,6 +11,7 @@ import { PostDataService } from "src/app/services/post-data.service";
 })
 export class HomeComponent implements OnInit {
 
+  showCommentBox=false;
   list: PostModule[];
   constructor(
     private firestore: AngularFirestore,
@@ -21,9 +22,10 @@ export class HomeComponent implements OnInit {
     this.postService.getPosts().subscribe(res => {
       this.list = res;
     });
-    this.postService.getMyAllPost().subscribe(res=>{
-      console.log(res)
-    })
+  }
+
+  CommentBox(){
+    this.showCommentBox=!this.showCommentBox
   }
 
 }
