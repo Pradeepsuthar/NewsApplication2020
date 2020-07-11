@@ -1,17 +1,21 @@
 <form #form="ngForm" autocomplete="off" (submit)="postCreated(form)">
     <!-- Tool Bar -->
-    <nav class="navbar navbar-light bg-white py-0 sticky-top" style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
-        <span class="my-auto">
+    <nav class="navbar navbar-light bg-white py-0 sticky-top d-flex justify-content-between"
+        style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
+        <span>
             <a class="navbar-brand" href="javascript:history.back()">
-                <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
-                        d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
-                    <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
-                </svg> {{ 'Create post' }}</a>
+                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                </svg></a>
         </span>
-        <button type="submit" class="btn btn-sm btn-primary post-btn my-auto" [disabled]="!form.valid">Post</button>
+        <p class="my-auto"><b>{{ 'Create post' }}</b></p>
+        <span>
+            <button type="submit" class="btn btn-sm btn-primary post-btn my-auto" [disabled]="!form.valid">Post</button>
+        </span>
     </nav>
+
     <div class="container my-3">
         <div class="media">
             <img [src]="user.imgUrl" [alt]="user.displayName" class="mr-3 rounded-circle" width="40" height="40">

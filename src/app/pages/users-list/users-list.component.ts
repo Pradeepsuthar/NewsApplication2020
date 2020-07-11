@@ -12,6 +12,7 @@ export class UsersListComponent implements OnInit {
 
   showMobileSearch=false;
   userList=[];
+  search_name : string;
   
   constructor(
     public manageApp:ManageAppService,
@@ -23,9 +24,7 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
     this.manageApp.getAllUsers().toPromise().then(data=>{
       data.docs.forEach(doc => {
-        // console.log(doc.data())
         this.userList.push(doc.data())
-        // console.log(this.userList)
       })
     })
   }

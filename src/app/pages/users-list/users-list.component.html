@@ -1,22 +1,24 @@
 <!-- Tool Bar -->
-<nav class="navbar navbar-light bg-white py-0 fixed-top"
-    style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3" *ngIf="!showMobileSearch">
+<nav class="navbar navbar-light bg-white py-0 sticky-top d-flex justify-content-between"
+    style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
     <span>
         <a class="navbar-brand" href="javascript:history.back()">
-            <svg class="bi bi-arrow-left-short" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+            <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
-                    d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
-                <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
-            </svg> {{ 'All users' }}</a>
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg></a>
     </span>
-    <svg (click)="toggleMobileNav()" class="bi bi-search" width="1.3em" height="1.3em" viewBox="0 0 16 16"
-        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-        <path fill-rule="evenodd"
-            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-    </svg>
+    <p class="my-auto"><b>{{ 'All users' }}</b></p>
+    <span>
+        <svg (click)="toggleMobileNav()" class="bi bi-search" width="1.3em" height="1.3em" viewBox="0 0 16 16"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+        </svg>
+    </span>
 </nav>
 <!-- Search bar -->
 <div class="d-flex bd-highlight bg-white py-0 fixed-top"
@@ -31,13 +33,13 @@
             </svg></a>
     </span>
     <div class="flex-fill bd-highlight mr-3">
-        <input type="search" class="border-0 w-100" placeholder="Search">
+        <input type="search" class="border-0 w-100" placeholder="Search" [(ngModel)]="search_name">
     </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid container bg-transparent my-3">
+<div class="jumbotron jumbotron-fluid container bg-transparent pt-0 mt-0">
     <ul class="list-unstyled">
-        <li class="media" *ngFor="let user of userList">
+        <li class="media" *ngFor="let user of userList | filter:search_name">
             <img [src]="user.photoURL" [alt]="user.displayName" class="mx-3 rounded-circle" width="45" height="45">
             <div class="media-body pt-2">
                 <div class="float-left my-auto">
@@ -45,7 +47,8 @@
                     <p>{{user.email}}</p>
                 </div>
                 <div class="float-right my-auto">
-                    <button class="btn btn-sm btn-primary follow-btn" *ngIf="logedInUserEmail==user.email; else otherUser" disabled>You</button>
+                    <button class="btn btn-sm btn-primary follow-btn"
+                        *ngIf="logedInUserEmail==user.email; else otherUser" disabled>You</button>
                     <ng-template #otherUser>
                         <button class="btn btn-sm btn-primary follow-btn">Follow</button>
                     </ng-template>

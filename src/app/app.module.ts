@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,8 +27,13 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { PostDataService } from './services/post-data.service';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ManageAppService } from './services/manage-app.service';
-
-
+import { CommentBoxComponent } from './components/comment-box/comment-box.component';
+import { SinglePostComponent } from './components/single-post/single-post.component';
+import { SingleUserListComponent } from './components/single-user-list/single-user-list.component';
+import { FollowersListComponent } from './components/followers-list/followers-list.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FollowingListComponent } from './components/following-list/following-list.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -42,7 +49,13 @@ import { ManageAppService } from './services/manage-app.service';
     NotificationsComponent,
     CreatePostComponent,
     SettingsComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CommentBoxComponent,
+    SinglePostComponent,
+    SingleUserListComponent,
+    FollowersListComponent,
+    EditProfileComponent,
+    FollowingListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +65,8 @@ import { ManageAppService } from './services/manage-app.service';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     PostDataService,
