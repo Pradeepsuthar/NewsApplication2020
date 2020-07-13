@@ -1,5 +1,5 @@
 <!-- Tool Bar -->
-<nav class="navbar navbar-light bg-white py-0 sticky-top d-flex justify-content-between"
+<nav class="navbar navbar-light color-theme py-0 sticky-top d-flex justify-content-between"
     style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
     <span>
         <a class="navbar-brand" href="javascript:history.back()">
@@ -21,7 +21,7 @@
     </span>
 </nav>
 <!-- Search bar -->
-<div class="d-flex bd-highlight bg-white py-0 fixed-top"
+<div class="d-flex bd-highlight bg-transparent py-0 fixed-top"
     style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3" *ngIf="showMobileSearch">
     <span class="ml-3 mr-0">
         <a class="navbar-brand" (click)="toggleMobileNav()">
@@ -33,24 +33,27 @@
             </svg></a>
     </span>
     <div class="flex-fill bd-highlight mr-3">
-        <input type="search" class="border-0 w-100" placeholder="Search" [(ngModel)]="search_name">
+        <input type="search" class="border-0 w-100 color-theme" placeholder="Search" [(ngModel)]="search_name">
     </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid container bg-transparent pt-0 mt-0">
     <ul class="list-unstyled">
         <li class="media" *ngFor="let user of userList | filter:search_name">
-            <img [src]="user.photoURL" [alt]="user.displayName" class="mx-3 rounded-circle" width="45" height="45">
+            <div *ngIf="!user.photoURL" class="mx-3 rounded-circle" style="background:linear-gradient(to right, red, purple);padding: 2px;"><span class="px-2 py-3">{{user.displayName.slice(0,1)}}</span></div>
+            <div *ngIf="user.photoURL">
+                <img [src]="user.photoURL" [alt]="user.displayName" class="mx-3 rounded-circle" width="45" height="45" style="background:linear-gradient(to right, red, purple);padding: 2px;">
+            </div>
             <div class="media-body pt-2">
                 <div class="float-left my-auto">
                     <small><b>{{user.displayName}}</b></small>
                     <p>{{user.email}}</p>
                 </div>
                 <div class="float-right my-auto">
-                    <button class="btn btn-sm btn-primary follow-btn"
+                    <button class="btn btn-sm btn-danger follow-btn shadow-sm"
                         *ngIf="logedInUserEmail==user.email; else otherUser" disabled>You</button>
                     <ng-template #otherUser>
-                        <button class="btn btn-sm btn-primary follow-btn">Follow</button>
+                        <button class="btn btn-sm btn-danger follow-btn shadow-sm">Follow</button>
                     </ng-template>
                 </div>
             </div>

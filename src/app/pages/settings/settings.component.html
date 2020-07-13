@@ -1,5 +1,5 @@
 <!-- Tool Bar -->
-<nav class="navbar navbar-light bg-white py-0 sticky-top d-flex justify-content-between"
+<nav class="navbar navbar-light color-theme py-0 sticky-top d-flex justify-content-between"
     style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
     <span>
         <a class="navbar-brand" href="javascript:history.back()">
@@ -16,14 +16,46 @@
 </nav>
 
 
-<div class="jumbotron jumbotron-fluid container bg-transparent my-3">
+<div class="jumbotron jumbotron-fluid container bg-transparent pt-0 mt-0">
     <div class="container">
         <ul class="list-group list-group-flush text-left">
-            <li class="list-group-item" routerLink="/create-post">Create New Post</li>
-            <li class="list-group-item">Recent Activity</li>
-            <li class="list-group-item">Terms & Conditions</li>
-            <li class="list-group-item">Privacy & Policy</li>
-            <li class="list-group-item" (click)="logout()">Log Out</li>
+            <div class="dropdown-divider my-0"></div>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0 text-uppercase text-muted" disabled><small><b>general</b></small></li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">
+                <span>Dark theme</span>
+                <span>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1"></label>
+                    </div>
+                </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">Recent Activity</li>
+            <div class="dropdown-divider my-0"></div>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0 text-uppercase text-muted" disabled><small><b>Support</b></small></li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">Help</li>
+            
+            <div class="dropdown-divider my-0"></div>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0 text-uppercase text-muted" disabled><small><b>about</b></small></li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">Terms & Conditions</li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">Privacy & Policy</li>
+            
+            <div class="dropdown-divider my-0"></div>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0 text-uppercase text-muted" disabled><small><b>account</b></small></li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0">
+                <span>Create New Post</span>
+                <span routerLink="/create-post">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between px-0 mx-0 border-0" (click)="logout()">Log Out</li>
         </ul>
+    </div>
+
+    <div class="fixed-bottom text-center mb-5 pb-4">
+        <small class="text-muted">Version 1.0</small><br>
+        <small class="text-muted">Developed by Pradeep Suthar</small>
     </div>
 </div>

@@ -34,6 +34,8 @@ import { FollowersListComponent } from './components/followers-list/followers-li
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowingListComponent } from './components/following-list/following-list.component';
 import { from } from 'rxjs';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { from } from 'rxjs';
     SingleUserListComponent,
     FollowersListComponent,
     EditProfileComponent,
-    FollowingListComponent
+    FollowingListComponent,
+    AboutUsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

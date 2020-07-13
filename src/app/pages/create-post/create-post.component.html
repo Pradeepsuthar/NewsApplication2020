@@ -1,6 +1,6 @@
 <form #form="ngForm" autocomplete="off" (submit)="postCreated(form)">
     <!-- Tool Bar -->
-    <nav class="navbar navbar-light bg-white py-0 sticky-top d-flex justify-content-between"
+    <nav class="navbar navbar-light color-theme py-0 sticky-top d-flex justify-content-between"
         style="display:flex;align-items:center;border-bottom:0.5px solid #e3e3e3">
         <span>
             <a class="navbar-brand" href="javascript:history.back()">
@@ -12,7 +12,7 @@
         </span>
         <p class="my-auto"><b>{{ 'Create post' }}</b></p>
         <span>
-            <button type="submit" class="btn btn-sm btn-primary post-btn my-auto" [disabled]="!form.valid">Post</button>
+            <button type="submit" class="btn btn-sm btn-danger post-btn my-auto" [disabled]="!form.valid">Post</button>
         </span>
     </nav>
 
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="mt-3">
-            <textarea class="postDesc border-0" placeholder="What's happening?" rows="10" name="postDesc"
+            <textarea class="postDesc border-0 bg-transparent" placeholder="What's happening?" rows="10" name="postDesc"
                 ngModel></textarea>
             <div class="form-group fixed-bottom mb-5 pb-3">
                 <div class="px-3">

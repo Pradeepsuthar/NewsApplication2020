@@ -20,7 +20,7 @@ export class PostDataService {
   ) { }
 
   getPosts() {
-    return this.firestore.collection('news').snapshotChanges().pipe(
+    return this.firestore.collection('posts').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
