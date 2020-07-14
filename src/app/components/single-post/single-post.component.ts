@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-single-post',
@@ -9,6 +10,9 @@ export class SinglePostComponent implements OnInit {
   showCommentBox=false;
   @Input() post: any;
   userLiked=true;
+
+  comment_message:string;
+  commentMess:string;
 
   constructor() { }
 
@@ -21,6 +25,10 @@ export class SinglePostComponent implements OnInit {
 
   getLikes(){
     this.userLiked=!this.userLiked;
+  }
+
+  getComments(){
+    this.commentMess=this.comment_message;
   }
 
 }

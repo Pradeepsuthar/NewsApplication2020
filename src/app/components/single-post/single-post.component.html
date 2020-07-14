@@ -12,7 +12,7 @@
         <img [src]="post.postImgUrl" class="w-100">
       </div>
     </div>
-    <div class="col-md-6 position-static px-3 py-3 pl-md-0 post-card">
+    <div class="col-md-6 position-static px-3 py-3 pl-md-0 post-card py-md-5">
       <p class="d-flex justify-content-between likes-comments-detail">
         <span><svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
@@ -66,13 +66,20 @@
           </li>
         </ul>
       </div>
-      <div class="card px-0 py-2 mt-3 rounded-0 border-0 bg-transparent" *ngIf="showCommentBox">
+      <div class="card px-0 py-2 mt-2 rounded-0 border-0 bg-transparent" *ngIf="showCommentBox">
+        <div class="p-2">
+          <h5>Comments</h5>
+        </div>
+        <div class="p-2">
+          <p class="p-3 bg-light mb-2" style="border-radius:20px"><span>Nice work bro this is nice post 🤗🤗</span><br><span><small>26 Jun 2020</small></span></p>
+          <p class="p-3 bg-light mb-2" style="border-radius:20px" *ngIf="commentMess">{{commentMess}}</p>
+        </div>
         <div class="my-auto d-flex bd-highlight">
           <span class="w-100 bd-highlight">
-            <input type="text" placeholder="Write a comment..." class="commentBox">
+            <input type="text" placeholder="Write a comment..." class="commentBox" [(ngModel)]="comment_message">
           </span>
           <span class="flex-shrink-1 bd-highlight my-auto">
-            <button class="btn btn-sm btn-danger commentPostBtn">
+            <button class="btn btn-sm btn-danger commentPostBtn" (click)="getComments()">
               <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-cursor" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
