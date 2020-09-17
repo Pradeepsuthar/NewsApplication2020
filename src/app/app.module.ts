@@ -26,7 +26,7 @@ import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { PostDataService } from './services/post-data.service';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ManageAppService } from './services/manage-app.service';
+import { UsersService } from './services/users.service';
 import { CommentBoxComponent } from './components/comment-box/comment-box.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { SingleUserListComponent } from './components/single-user-list/single-user-list.component';
@@ -35,7 +35,11 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { FollowingListComponent } from './components/following-list/following-list.component';
 import { from } from 'rxjs';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserChatComponent } from './pages/user-chat/user-chat.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { SinglePostCommentComponent } from './components/comment-box/single-post-comment/single-post-comment.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     EditProfileComponent,
     FollowingListComponent,
     AboutUsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserChatComponent,
+    SinglePostCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -70,11 +76,12 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientModule
   ],
   providers: [
     PostDataService,
-    ManageAppService
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,27 @@
 div ul li:focus{
     outline: none;
 }
+
+.notificationStatus{
+    position: relative;
+    top: -7px;
+    left: -9px;
+    border-radius: 40%;
+    background-color: #E50914;
+    color: #fff;
+    font-size: 8px;
+    padding: 2px 5px 2px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 1px solid #fff;
+}
+
+.center-btn-add-post{
+    background:linear-gradient(to right, #ff242f, purple);
+    padding: 2px;
+}
+
+.active{
+    color: #E50914;
+}

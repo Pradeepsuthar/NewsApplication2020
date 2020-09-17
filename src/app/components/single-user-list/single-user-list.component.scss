@@ -1,0 +1,21 @@
+.media{
+    display: flex;
+    align-items: center;
+    border-top:0.5px solid #e3e3e3;
+    border-bottom:0.5px solid #e3e3e3;
+}
+
+.media-body p{
+    font-size: 13px;
+    color: #8e8e8e;
+    line-height: normal;
+}
+
+.follow-btn{
+    font-size: 10px;
+    margin: 12px;
+}
+
+input[type="search"]:focus{
+    outline: none;
+}

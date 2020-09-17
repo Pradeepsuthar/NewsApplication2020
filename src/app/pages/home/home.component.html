@@ -1,17 +1,15 @@
 <app-header></app-header>
 
-<div class="nav-scroller border-bottom color-theme">
-  <nav class="nav d-flex justify-content-between p-2">
-    <a class="text-dark mx-2 text-decoration-none" href="#"><small><b>For you</b></small></a>
-    <a class="text-dark mx-2 text-decoration-none" href="#"><small><b>Trending</b></small></a>
-    <a class="text-dark mx-2 text-decoration-none" href="#"><small><b>News</b></small></a>
-    <a class="text-dark mx-2 text-decoration-none" href="#"><small><b>Sports</b></small></a>
-    <a class="text-dark mx-2 text-decoration-none" href="#"><small><b>Enterainment</b></small></a>
+<div class="nav-scroller border-bottom color-theme d-block">
+  <nav class="nav d-flex justify-content-between p-2 mr-2">
+    <ng-container *ngFor="let cat of categoryList;">
+      <a class="text-dark mx-2 text-decoration-none pr-0" href="#"><small><b class="border px-3 py-1 rounded">{{cat}}</b></small></a>
+    </ng-container>
   </nav>
 </div>
 
 <div class="bg-transparent">
-  <div *ngFor="let post of list">
+  <div *ngFor="let post of list;">
     <app-single-post [post]="post"></app-single-post>
   </div>
   <br><br>

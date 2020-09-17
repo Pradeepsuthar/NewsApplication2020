@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { ManageAppService } from 'src/app/services/manage-app.service';
+import { UsersService } from 'src/app/services/users.service';
+import { PostDataService } from 'src/app/services/post-data.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',
@@ -9,36 +11,41 @@ import { ManageAppService } from 'src/app/services/manage-app.service';
 })
 export class AccountComponent implements OnInit {
 
-  user: any = {
-    imgUrl: "",
-    displayName: "",
-    email: "",
-  }
   isauthenticated = false;
+  userData:any={};
+  myPostData:any=[];
 
   constructor(
-    private auth: AuthService,
-    private manageApp: ManageAppService,
+    private _auth: AuthService,
+    private _userService: UsersService,
+    private _postService: PostDataService
   ) { }
 
   ngOnInit(): void {
-    this.manageApp.getUserData().subscribe(res => {
-      this.user = {
-        imgUrl: res['photoURL'],
-        displayName: res['displayName'],
-        email: res['email']
-      }
-      // console.log(res['photoURL'])
+    this._postService.getPostByUserId(this._auth.getUid()).pipe(
+      map(data => {
+        const myPost = [];
+        for(var i in data){
+          // console.log(data[i]['postId'])
+          this._postService.getPostByPostId(data[i]['postId']).subscribe(res => {
+            // console.log("MY all post",res)
+            myPost.push(res);
+          })
+        }
+        return myPost;
+      })
+    ).subscribe(res=>{
+      this.myPostData = res;
+      console.log('My All Post :',this.myPostData) 
     })
-
-
-
-    this.isauthenticated = this.auth.isAuthenticated()
+    this._userService.getUserById(this._auth.getUid()).subscribe(res=>{
+      this.userData = res; 
+    })
+    this.isauthenticated = this._auth.isAuthenticated()
   }
 
-
   logout() {
-    this.auth.userLogout()
+    this._auth.userLogout()
   }
 
 }

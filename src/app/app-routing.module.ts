@@ -9,11 +9,14 @@ import { AccountComponent } from './pages/account/account.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { UserChatComponent } from './pages/user-chat/user-chat.component';
+
 
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
+  {path:"home",component:HomeComponent},
   {path:"signin",component:SigninComponent},
   {path:"signup",component:SignupComponent},
   {path:"forgot-password",component:ForgotPasswordComponent},
@@ -22,6 +25,7 @@ const routes: Routes = [
   {path:"notifications",component:NotificationsComponent,canActivate:[AuthGuardService]},
   {path:"create-post",component:CreatePostComponent,canActivate:[AuthGuardService]},
   {path:"settings",component:SettingsComponent,canActivate:[AuthGuardService]},
+  {path:"chat",component:UserChatComponent},
 ];
 
 @NgModule({

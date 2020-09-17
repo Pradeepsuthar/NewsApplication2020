@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { PostModule } from 'src/app/modules/post/post.module';
+import { Post } from '../../modals/post-modal';
 import { PostDataService } from "src/app/services/post-data.service";
 
 
@@ -11,9 +10,11 @@ import { PostDataService } from "src/app/services/post-data.service";
 })
 export class HomeComponent implements OnInit {
 
-  list: PostModule[];
+  list: Post[];
+  categoryList = ['For you', 'Trending', 'News', 'Sports', 'Enterainment'];
+
+
   constructor(
-    private firestore: AngularFirestore,
     public postService: PostDataService
   ) { }
 

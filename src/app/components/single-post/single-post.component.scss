@@ -1,3 +1,11 @@
+.post__img img{
+    width: 100%;
+    max-height: 100vh;
+}
+.post__img img{
+    object-fit: cover
+}
+
 .post-card h5{
     font-size: 14px;
     font-weight: 600;
@@ -24,35 +32,9 @@
 }
 
 .placeholder-img{
-    background-image: url("https://www.helpscout.com/images/blog/2016/sep/9-13-loader.gif");
-    background-color: #cccccc;
-    height: auto;
+    background-image: url("../../../assets/images/loaders/loader.gif");
+    min-height: 10vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.commentBox{
-    width: 100%;
-    padding: 8px 13px 8px;
-    margin: 0;
-    font-size: 13px;
-    background-color: #f7f7f7;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border: none;
-}
-.commentBox:focus{
-    outline: none;
-}
-
-.commentPostBtn{
-    border: 3px solid #dc3545;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-.commentPostBtn:focus{
-    outline: none !important;
 }

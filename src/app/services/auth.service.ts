@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth} from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { auth } from 'firebase';
+import { auth, firestore } from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -66,5 +66,14 @@ export class AuthService {
       this.afAuth.auth.signOut()
    }
 
+
+  // Get server Timestamp
+  getTimestamp() {
+    var SECONDS = firestore.Timestamp.now();
+    var date = new Date(null);
+    date.setSeconds(SECONDS.seconds); // specify value for SECONDS here
+    var result = date.toISOString().substr(11, 8);
+    return date
+  }
 
 }

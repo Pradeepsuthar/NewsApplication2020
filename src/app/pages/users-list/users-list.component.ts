@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ManageAppService } from 'src/app/services/manage-app.service';
+import { UsersService } from 'src/app/services/users.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { auth } from 'firebase';
 
 @Component({
   selector: 'app-users-list',
@@ -10,27 +9,24 @@ import { auth } from 'firebase';
 })
 export class UsersListComponent implements OnInit {
 
+  search_name : string;
   showMobileSearch=false;
   userList=[];
-  search_name : string;
   
+
   constructor(
-    public manageApp:ManageAppService,
-    public auth:AuthService
-    ) { }
-
-  logedInUserEmail = this.auth.getEmail()
-
-  ngOnInit(): void {
-    this.manageApp.getAllUsers().toPromise().then(data=>{
-      data.docs.forEach(doc => {
-        this.userList.push(doc.data())
-      })
+    private _userService:UsersService,
+    private _auth:AuthService
+  ) { }
+  
+  ngOnInit() {
+    this._userService.getAllUsers().subscribe(res=>{
+      this.userList = res
     })
-  }
+   }
 
   toggleMobileNav(){
     this.showMobileSearch=!this.showMobileSearch
   }
-
+  
 }
