@@ -40,6 +40,7 @@ import { UserChatComponent } from './pages/user-chat/user-chat.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SinglePostCommentComponent } from './components/comment-box/single-post-comment/single-post-comment.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { SinglePostCommentComponent } from './components/comment-box/single-post
     AngularFireAuthModule,
     AngularFirestoreModule,
     Ng2SearchPipeModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     PostDataService,
